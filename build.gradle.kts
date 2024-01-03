@@ -2,8 +2,8 @@ plugins {
     kotlin("multiplatform") version "1.9.20-RC2"
 }
 
-group = "me.user"
-version = "1.0-SNAPSHOT"
+group = "org.wordandahalf"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,15 @@ kotlin {
         }
     }
     sourceSets {
-        val nativeMain by getting
-        val nativeTest by getting
+        val nativeMain by getting {
+            dependencies {
+                implementation("com.squareup.okio:okio:3.7.0")
+            }
+        }
+        val nativeTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
     }
 }
